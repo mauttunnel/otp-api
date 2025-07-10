@@ -1,5 +1,3 @@
-const fetch = require('node-fetch');
-
 exports.handler = async (event) => {
   const { number } = event.queryStringParameters;
 
@@ -17,7 +15,7 @@ exports.handler = async (event) => {
         'Content-Type': 'application/json',
         'User-Agent': 'Mozilla/5.0'
       },
-      body: JSON.stringify({ user_id: number })
+      body: JSON.stringify(JSON.stringify({ user_id: number }))
     });
 
     const swiggyRequest = fetch('https://profile.swiggy.com/api/v3/app/request_call_verification', {
